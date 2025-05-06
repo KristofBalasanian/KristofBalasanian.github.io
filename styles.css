@@ -1,0 +1,15 @@
+/* Global styles */
+body {
+    background-color: black; /* Set background color to black */
+    color: white; /* Set text color to white */
+    font-family: Arial, sans-serif; /* Choose a default font */
+    margin: 0;
+    padding: 0;
+}
+
+/* Link styling */
+a {
+    color: #1E90FF; /* Blue links for visibility */
+}
+
+/* Any other specific styling you want to add can go here */
