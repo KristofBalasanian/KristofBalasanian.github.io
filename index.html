@@ -79,8 +79,8 @@
 }
 @media (max-width: 719px) { .grid .centered { width: auto; justify-self: stretch; } }
 :root { color-scheme: light dark; }
-    :root[data-theme="dark"] { --bg: #202124; --fg: #E8EAED; --accent: #E8EAED; --link: #8AB4F8; --overlay-fg: #E8EAED; }
-    @media (prefers-color-scheme: dark) { :root:not([data-theme]) { --bg: #202124; --fg: #E8EAED; --link: #8AB4F8; --overlay-fg: #E8EAED; } }
+    :root[data-theme="dark"] { --bg: #202124; --fg: #E8EAED; --accent: #E8EAED; --link: #8AB4F8; --overlay-fg: #fff; }
+    @media (prefers-color-scheme: dark) { :root:not([data-theme]) { --bg: #202124; --fg: #E8EAED; --link: #8AB4F8; --overlay-fg: #fff; } }
     @media (max-width: 600px) { header .top { flex-direction: row; align-items: center; } }
   #contact a { color: var(--link); text-decoration: underline; text-decoration-skip-ink: none; text-underline-offset: 3px; text-decoration-thickness: 1.5px; }
     #theme-toggle { width: 36px; height: 36px; padding: 8px; border-radius: 9999px; display: inline-flex; align-items: center; justify-content: center; }
@@ -114,9 +114,9 @@
     /* Hide original header row since overlay replicates it */
     header .top{display:none;}
     
-  :root { --overlay-fg: #000; }
+  :root { --overlay-fg: #fff; }
     /* Tighter space between image and hero */
-    section[aria-label="Intro"] .hero { padding-top: var(--seg); }
+    section[aria-label="Intro"] .hero { padding-top: calc(var(--seg) * 0.75); }
   </style>
 </head>
 <body>
