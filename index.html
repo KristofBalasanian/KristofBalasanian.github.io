@@ -114,9 +114,16 @@
     /* Hide original header row since overlay replicates it */
     header .top{display:none;}
     
-  :root { --overlay-fg: #fff; }
+  :root { --overlay-fg: #000; }
     /* Tighter space between image and hero */
     section[aria-label="Intro"] .hero { padding-top: calc(var(--seg) * 0.75); }
+  .ov-name{font-weight:800;font-size:clamp(18px,3vw,28px)}
+    .image-overlay{font-size:clamp(14px,2.2vw,18px)}
+    .image-overlay .ov-nav a{font-weight:600}
+  /* Force overlay toggle ring: black in light, white in dark */
+    .image-overlay .ov-toggle { border-color: #000; color: #000; }
+    :root[data-theme="dark"] .image-overlay .ov-toggle { border-color: #fff; color: #fff; }
+    @media (prefers-color-scheme: dark) { :root:not([data-theme]) .image-overlay .ov-toggle { border-color: #fff; color: #fff; } }
   </style>
 </head>
 <body>
