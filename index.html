@@ -26,8 +26,7 @@
     body {
       margin: 0; background: var(--bg); color: var(--fg);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, system-ui, sans-serif;
-      line-height: 1.6;
-      text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+      line-height: 1.6; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
     }
     .skip { position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden; }
     .skip:focus { position:static; width:auto; height:auto; padding:8px 12px; border:1px solid #000; background:#fff; }
@@ -40,11 +39,8 @@
     .hero { padding: 40px var(--pad) 0; }
     .hero h1 { font-size: clamp(32px, 5vw, 48px); line-height: 1.15; margin: 0 0 12px; }
     .hero p { font-size: clamp(16px, 2vw, 18px); margin: 0 0 20px; }
-    .buttons { display: flex; flex-wrap: wrap; gap: 12px; }
-    .button {
-      display: inline-block; border: 1.5px solid #000; color: #000; background: #fff;
-      padding: 12px 18px; border-radius: var(--radius); text-decoration: none; font-weight: 600;
-    }
+    .buttons { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; width: 100%; }
+    .button { display: inline-block; border: 1.5px solid #000; color: #000; background: #fff; padding: 12px 18px; border-radius: var(--radius); text-decoration: none; font-weight: 600; }
     .button:hover, .button:focus { outline: none; transform: translateY(-1px); }
     .divider { height: 1px; border: 0; background: #000; margin: var(--seg) 0; opacity: 0.15; }
     section { padding: 0; }
@@ -58,6 +54,10 @@
     a:focus-visible { outline: 2px solid #000; }
     .wrap-tight { padding-top: 0; padding-bottom: 0; }
     main.wrap { padding-top: 0; }
+      .grid .centered { grid-column: 1 / -1; justify-self: center; width: calc((100% - 12px)/2); }
+  @media (max-width: 719px) { .grid .centered { width: 100%; } }
+  @media (min-width: 720px) { .card { height: 180px; } }
+@media (max-width: 719px) { .card { height: auto; } }
   </style>
 </head>
 <body>
@@ -66,16 +66,13 @@
     <div class="top">
       <div class="brand" aria-label="Site logo and name">Kristof Balasanian</div>
       <nav aria-label="Primary">
-        <a href="#about">About</a>
-        <a href="#work">Selected Work</a>
         <a href="#contact">Contact</a>
         <a href="assets/Kristof Balasanian Resume.pdf" target="_blank" rel="noopener">Resume</a>
       </nav>
     </div>
     <div class="hero" id="content">
-      <h1>Mechanical Engineer with a bias for building.</h1>
-      <p>I design and prototype systems end‑to‑end — from CAD and analysis to
-        manufacturing, test, and iteration. This page is a quick landing spot; the project deck has more visuals.</p>
+      <h1>Mechanical Engineer</h1>
+      <p>I like to solve hard problems and build cool stuff. View my projects deck for a high level overview of my experiences. (Some of my site is still a WIP, thank you for your patience while I get everything uploaded)</p>
       <div class="buttons">
         <a class="button" href="SLIDES_URL" target="_blank" rel="noopener" aria-label="Open projects slide deck in a new tab">View Projects Deck ↗</a>
         <a class="button" href="assets/Kristof Balasanian Resume.pdf" target="_blank" rel="noopener" aria-label="Open resume PDF in a new tab">Resume ↗</a>
@@ -87,48 +84,52 @@
     <section id="work" aria-labelledby="work-title">
       <h2 id="work-title">Selected Work</h2>
       <div class="grid">
-        <article class="card"><h3 style="margin:0 0 6px; font-size:18px;">Project Title One</h3>
-          <p style="margin:0 0 10px;">One‑line summary focused on outcome and your role.</p>
+        <article class="card"><h3 style="margin:0 0 6px; font-size:18px;">FSAE HV Battery</h3>
+          <p style="margin:0 0 10px;">Thermal/Energy Modeling, packaging, and structures.</p>
           <div class="buttons">
-            <a href="#" class="button" target="_blank" rel="noopener">Case Link</a>
-            <a href="SLIDES_URL" class="button" target="_blank" rel="noopener">Slide</a>
+            <a href="SLIDES_URL" class="button" target="_blank" rel="noopener">Link ↗</a>
           </div>
         </article>
-        <article class="card"><h3 style="margin:0 0 6px; font-size:18px;">Project Title Two</h3>
-          <p style="margin:0 0 10px;">Another concise description with a measurable result.</p>
+        <article class="card"><h3 style="margin:0 0 6px; font-size:18px;">Amidon Heavy Industries</h3>
+          <p style="margin:0 0 10px;">Rapid prototyping and testing of underwater and surface marine vehicles.</p>
           <div class="buttons">
-            <a href="#" class="button" target="_blank" rel="noopener">Case Link</a>
-            <a href="SLIDES_URL" class="button" target="_blank" rel="noopener">Slide</a>
+            <a href="SLIDES_URL" class="button" target="_blank" rel="noopener">Link ↗</a>
           </div>
         </article>
-        <article class="card"><h3 style="margin:0 0 6px; font-size:18px;">Project Title Three</h3>
-          <p style="margin:0 0 10px;">Keep it short; deck has details.</p>
+        <article class="card centered">
+          <h3 style="margin:0 0 6px; font-size:18px;"><em>Coming Soon</em></h3>
+          <p style="margin:0 0 10px;">More projects on the way.</p>
           <div class="buttons">
-            <a href="#" class="button" target="_blank" rel="noopener">Case Link</a>
-            <a href="SLIDES_URL" class="button" target="_blank" rel="noopener">Slide</a>
+            <a href="#" class="button">Link ↗</a>
           </div>
         </article>
       </div>
     </section>
+
     <hr class="divider" />
+
     <section id="about" aria-labelledby="about-title">
       <h2 id="about-title">About</h2>
       <p>Thank you for visiting my website! I’m a 4th-year Mechanical Engineering undergrad at San Diego State University, looking for full-time roles starting in summer 2026.</p>
       <p>I have about a year of professional experience across several internships. At <strong>Tesla</strong>, I worked on a ground-up vehicle program on the integration team, which gave me solid exposure to high-volume production. Last summer I joined <strong>Amidon Heavy Industries</strong>, a pre-seed startup building fleets of autonomous underwater and surface robots for commercial ocean-infrastructure monitoring; I had a lot of ownership and hands-on build/test. I’m currently at <strong>Kunin</strong>, a pre-seed startup where I’m responsible for modeling, fluids analysis, and BOM/CAPEX buildout for a spiral-wound, nanofiber-based ion-exchange module for selective ionic separations. The technology will be initially deployed in the mining industry. I have also held several leadership positions in my schools FSAE EV team up until this year</p>
       <p>Outside of building cool stuff I’m into triathlon, skiing, sailing, travel, a lot of good food, and going to the beach with my friends!</p>
     </section>
+
     <hr class="divider" />
+
     <section id="contact" aria-labelledby="contact-title">
       <h2 id="contact-title">Contact</h2>
-      <p style="margin:0 0 12px;">Always open to chat with anyone for any reason!</p>
+      <p style="margin:0 0 12px;">Always open to chat with anyone!</p>
       <p style="margin:0 0 6px;"><strong>Email:</strong> <a href="mailto:kristofbalasanian@gmail.com">kristofbalasanian@gmail.com</a></p>
       <p style="margin:0 0 6px;"><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/kristofbalasanian/" target="_blank" rel="noopener">linkedin.com/in/kristofbalasanian</a></p>
       <p style="margin:0;"><strong>GitHub:</strong> <a href="https://github.com/KristofBalasanian" target="_blank" rel="noopener">github.com/KristofBalasanian</a></p>
     </section>
   </main>
+
   <footer class="wrap" role="contentinfo">
-    <span>© <span id="y"></span> Made with love by Kristof Balasanian</span>
+    <span>© <span id="y"></span> KNB</span>
   </footer>
+
   <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
