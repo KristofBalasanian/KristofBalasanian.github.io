@@ -20,6 +20,7 @@
       --maxw: 760px;
       --pad: 24px;
       --radius: 16px;
+      --seg: 32px;
     }
 
     html, body { height: 100%; }
@@ -40,7 +41,7 @@
 
     /* Layout */
     .wrap { max-width: var(--maxw); margin: 0 auto; padding: var(--pad); }
-    header { padding: calc(var(--pad) * 1.5) var(--pad) var(--pad); }
+    header { padding: calc(var(--pad) * 1.5) var(--pad) 0; }
     header .top {
       display: flex; align-items: center; justify-content: space-between; gap: 12px;
     }
@@ -48,7 +49,7 @@
     nav a { color: var(--fg); text-decoration: none; margin-left: 16px; }
     nav a:hover, nav a:focus { text-decoration: underline; }
 
-    .hero { padding: 40px var(--pad) 16px; }
+    .hero { padding: 40px var(--pad) 0; }
     .hero h1 { font-size: clamp(32px, 5vw, 48px); line-height: 1.15; margin: 0 0 12px; }
     .hero p { font-size: clamp(16px, 2vw, 18px); margin: 0 0 20px; }
 
@@ -59,21 +60,24 @@
     }
     .button:hover, .button:focus { outline: none; transform: translateY(-1px); }
 
-    .divider { height: 1px; border: 0; background: #000; margin: 32px 0; opacity: 0.15; }
+    .divider { height: 1px; border: 0; background: #000; margin: var(--seg) 0; opacity: 0.15; }
 
-    section { padding: 8px 0 8px; }
+    section { padding: 0; }
     section h2 { font-size: 20px; margin: 0 0 8px; }
     .card { border: 1px solid #000; border-radius: var(--radius); padding: 16px; }
 
     .grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
     @media (min-width: 720px) { .grid { grid-template-columns: 1fr 1fr; } }
 
-    footer { padding: 40px var(--pad); font-size: 14px; }
+    footer { padding: var(--seg) var(--pad); font-size: 14px; }
     footer a { color: var(--fg); }
 
     /* Links */
     a { outline-offset: 2px; }
     a:focus-visible { outline: 2px solid #000; }
+          /* tighten spacing above first divider */
+    .wrap-tight { padding-top: 0; padding-bottom: 0; }
+    main.wrap { padding-top: 0; }
       </style>
 </head>
 <body>
@@ -101,7 +105,9 @@
     </div>
   </header>
 
+  <div class="wrap wrap-tight">
   <hr class="divider" />
+  </div>
 
   <main class="wrap" role="main">
     <section id="work" aria-labelledby="work-title">
@@ -135,10 +141,10 @@
 
     <section id="about" aria-labelledby="about-title">
       <h2 id="about-title">About</h2>
-      <p>
-        Short bio goes here. Mention your focus areas, the kinds of problems you like solving,
-        and what you are looking for next. Keep it plain and readable.
-      </p>
+      <p>Thank you for visiting my website! I’m a 4th-year Mechanical Engineering undergrad at San Diego State University, looking for full-time roles starting in summer 2026.</p>
+      <p>I have about a year of professional experience across several internships. At Tesla, I worked on a ground-up vehicle program on the integration team, which gave me solid exposure to high-volume production. Last summer I joined a pre-seed startup (Amidon Heavy Industries) building fleets of autonomous underwater and surface robots for commercial ocean-infrastructure monitoring; I had a lot of ownership and hands-on build/test. I’m currently at another startup (Stealth) where I’m responsible for modeling, fluids analysis, and BOM/CAPEX buildout for a spiral-wound, nanofiber-based ion-exchange module for selective ionic separations.</p>
+      <p><strong>One-liner:</strong> I turn messy constraints into clean, testable hardware—from CAD to bench to build.</p>
+      <p>Outside of work I’m into triathlon, skiing, sailing, travel, a lot of good food, and going to the beach!</p>
     </section>
 
     <hr class="divider" />
@@ -159,7 +165,7 @@
   </main>
 
   <footer class="wrap" role="contentinfo">
-    <span>© <span id="y"></span> Made with love by Kristof Balasanian</span>
+    <span>© <span id="y"></span> Kristof Balasanian</span>
   </footer>
 
   <script>
