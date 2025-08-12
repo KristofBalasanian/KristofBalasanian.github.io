@@ -21,6 +21,7 @@
       --pad: 24px;
       --radius: 16px;
       --seg: 32px;
+      --link: #1a73e8; /* Google blue for links in light mode */
     }
     html, body { height: 100%; }
     body {
@@ -29,35 +30,47 @@
       line-height: 1.6; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
     }
     .skip { position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden; }
-    .skip:focus { position:static; width:auto; height:auto; padding:8px 12px; border:1px solid #000; background:#fff; }
+    .skip:focus { position:static; width:auto; height:auto; padding:8px 12px; border:1px solid var(--fg); background: var(--bg); }
     .wrap { max-width: var(--maxw); margin: 0 auto; padding: var(--pad); }
     header { padding: calc(var(--pad) * 1.5) var(--pad) 0; }
     header .top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
     .brand { font-weight: 700; letter-spacing: 0.2px; }
-    nav a { color: var(--fg); text-decoration: none; margin-left: 16px; }
+    nav a { color: var(--fg); text-decoration: none; }
+    nav { display:flex; flex-wrap: wrap; gap: 16px; }
     nav a:hover, nav a:focus { text-decoration: underline; }
     .hero { padding: 40px var(--pad) 0; }
     .hero h1 { font-size: clamp(32px, 5vw, 48px); line-height: 1.15; margin: 0 0 12px; }
     .hero p { font-size: clamp(16px, 2vw, 18px); margin: 0 0 20px; }
     .buttons { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; width: 100%; }
-    .button { display: inline-block; border: 1.5px solid #000; color: #000; background: #fff; padding: 12px 18px; border-radius: var(--radius); text-decoration: none; font-weight: 600; }
+    .button { display: inline-block; border: 1.5px solid var(--fg); color: var(--fg); background: var(--bg); padding: 12px 18px; border-radius: var(--radius); text-decoration: none; font-weight: 600; }
     .button:hover, .button:focus { outline: none; transform: translateY(-1px); }
-    .divider { height: 1px; border: 0; background: #000; margin: var(--seg) 0; opacity: 0.15; }
+    .divider { height: 1px; border: 0; background: var(--fg); margin: var(--seg) 0; opacity: 0.15; }
     section { padding: 0; }
     section h2 { font-size: 20px; margin: 0 0 8px; }
-    .card { border: 1px solid #000; border-radius: var(--radius); padding: 16px; }
+    .card { border: 1px solid var(--fg); border-radius: var(--radius); padding: 16px; display: flex; flex-direction: column; }
     .grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
     @media (min-width: 720px) { .grid { grid-template-columns: 1fr 1fr; } }
     footer { padding: var(--seg) var(--pad); font-size: 14px; }
     footer a { color: var(--fg); }
     a { outline-offset: 2px; }
-    a:focus-visible { outline: 2px solid #000; }
+    a:focus-visible { outline: 2px solid var(--fg); }
     .wrap-tight { padding-top: 0; padding-bottom: 0; }
-    main.wrap { padding-top: 0; }
-      .grid .centered { grid-column: 1 / -1; justify-self: center; width: calc((100% - 12px)/2); }
-  @media (max-width: 719px) { .grid .centered { width: 100%; } }
-  @media (min-width: 720px) { .card { height: 180px; } }
+    main.wrap { padding-top: 0; }@media (min-width: 720px) { .card { height: 180px; } }
 @media (max-width: 719px) { .card { height: auto; } }
+  .card .buttons { margin-top: 10px; }
+  .card .content { flex: 1; }
+@media (min-width: 720px) {
+  .grid .centered { grid-column: 1 / -1; justify-self: center; width: calc((100% - 12px)/2); }
+}
+@media (max-width: 719px) {
+  .grid .centered { width: 100%; }
+}
+:root { color-scheme: light dark; }
+    :root[data-theme="dark"] { --bg: #202124; --fg: #E8EAED; --accent: #E8EAED; --link: #8AB4F8; }
+    @media (prefers-color-scheme: dark) { :root:not([data-theme]) { --bg: #202124; --fg: #E8EAED; --link: #8AB4F8; } } }
+    @media (max-width: 600px) { header .top { flex-direction: column; align-items: flex-start; } }
+  #contact a { color: var(--link); text-decoration: underline; text-decoration-skip-ink: none; text-underline-offset: 3px; text-decoration-thickness: 1.5px; }
+    #theme-toggle { width: 36px; height: 36px; padding: 8px; border-radius: 9999px; display: inline-flex; align-items: center; justify-content: center; }
   </style>
 </head>
 <body>
@@ -68,6 +81,7 @@
       <nav aria-label="Primary">
         <a href="#contact">Contact</a>
         <a href="assets/Kristof Balasanian Resume.pdf" target="_blank" rel="noopener">Resume</a>
+        <button class="button" id="theme-toggle" aria-pressed="false" aria-label="Toggle dark mode">🌙</button>
       </nav>
     </div>
     <div class="hero" id="content">
@@ -84,21 +98,20 @@
     <section id="work" aria-labelledby="work-title">
       <h2 id="work-title">Selected Work</h2>
       <div class="grid">
-        <article class="card"><h3 style="margin:0 0 6px; font-size:18px;">FSAE HV Battery</h3>
-          <p style="margin:0 0 10px;">Thermal/Energy Modeling, packaging, and structures.</p>
+        <article class="card"><div class="content"><h3 style="margin:0 0 6px; font-size:18px;">FSAE HV Battery</h3>
+          <p style="margin:0 0 10px;">Thermal/Energy Modeling, packaging, and structures.</p></div>
           <div class="buttons">
             <a href="SLIDES_URL" class="button" target="_blank" rel="noopener">Link ↗</a>
           </div>
         </article>
-        <article class="card"><h3 style="margin:0 0 6px; font-size:18px;">Amidon Heavy Industries</h3>
-          <p style="margin:0 0 10px;">Rapid prototyping and testing of underwater and surface marine vehicles.</p>
+        <article class="card"><div class="content"><h3 style="margin:0 0 6px; font-size:18px;">Amidon Heavy Industries</h3>
+          <p style="margin:0 0 10px;">Rapid prototyping and testing of underwater and surface marine vehicles.</p></div>
           <div class="buttons">
             <a href="SLIDES_URL" class="button" target="_blank" rel="noopener">Link ↗</a>
           </div>
         </article>
-        <article class="card centered">
-          <h3 style="margin:0 0 6px; font-size:18px;"><em>Coming Soon</em></h3>
-          <p style="margin:0 0 10px;">More projects on the way.</p>
+        <article class="card centered"><div class="content"><h3 style="margin:0 0 6px; font-size:18px;"><em>Coming Soon</em></h3>
+          <p style="margin:0 0 10px;">More projects on the way.</p></div>
           <div class="buttons">
             <a href="#" class="button">Link ↗</a>
           </div>
@@ -130,6 +143,27 @@
     <span>© <span id="y"></span> KNB</span>
   </footer>
 
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+  <script>
+  // Current year
+  document.getElementById('y').textContent = new Date().getFullYear();
+  // Theme toggle with persistence
+  (function(){
+    const root = document.documentElement;
+    const btn = document.getElementById('theme-toggle');
+    const key = 'theme';
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const saved = localStorage.getItem(key);
+    const initial = saved || (prefersDark ? 'dark' : 'light');
+    function apply(t){
+      root.setAttribute('data-theme', t);
+      if (btn) { btn.setAttribute('aria-pressed', t==='dark'); btn.textContent = t==='dark' ? '☀️' : '🌙'; }
+      localStorage.setItem(key, t);
+    }
+    apply(initial);
+    if (btn) btn.addEventListener('click', () => {
+      apply(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+    });
+  })();
+</script>
 </body>
 </html>
