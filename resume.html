@@ -13,7 +13,9 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://KristofBalasanian.github.io/" />
   <style>
-    :root { --bg: #fff; --fg: #000; --maxw: 920px; --pad: 24px; --radius: 14px; }
+    :root {
+      --bg: #fff; --fg: #000; --maxw: 920px; --pad: 24px; --radius: 14px;
+    }
     html, body { height: 100%; }
     body {
       margin: 0; background: var(--bg); color: var(--fg);
@@ -21,14 +23,15 @@
       line-height: 1.6; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
     }
     .wrap { max-width: var(--maxw); margin: 0 auto; padding: var(--pad); }
-     header { padding: calc(var(--pad) * 1.2) var(--pad) var(--pad); }
+    header { padding: calc(var(--pad) * 1.2) var(--pad) var(--pad); }
     .top { display:flex; align-items:center; justify-content: space-between; gap: 12px; }
     .brand { font-weight: 700; letter-spacing: .2px; }
     .actions { display:flex; flex-wrap:wrap; gap: 10px; }
     .button { display:inline-block; border:1.5px solid #000; color:#000; background:#fff; padding:10px 14px; border-radius: var(--radius); text-decoration:none; font-weight:600; }
     .button:hover, .button:focus { transform: translateY(-1px); }
     .divider { height:1px; background:#000; opacity:.15; border:0; margin: 16px 0 12px; }
-    .pdf { width: 100%; height: calc(100vh - 180px); border: 1px solid #000; border-radius: var(--radius); }
+
+    
     .note { font-size: 14px; opacity:.8; margin-top: 8px; }
     a { color: inherit; }
     a:focus-visible { outline: 2px solid #000; outline-offset: 2px; }
@@ -39,22 +42,24 @@
     <div class="top">
       <div class="brand" aria-label="Site logo and name">Kristof Balasanian</div>
       <nav class="actions" aria-label="Resume actions">
+        <a class="button" href="index.html" aria-label="Back to home">← Back to Home</a>
         <a class="button" href="assets/resume.pdf" download>Download PDF</a>
         <a class="button" href="assets/resume.pdf" target="_blank" rel="noopener">Open in new tab ↗</a>
       </nav>
     </div>
     <hr class="divider" />
-    <div class="note">If the embedded view doesn’t load, use the buttons above.</div>
+    <div class="note">Use the buttons to view or download a clean PDF.</div>
   </header>
+
   <main class="wrap" role="main" aria-labelledby="resume-title">
-    <h1 id="resume-title" style="position:absolute; left:-9999px;">Resume</h1>
-    <object class="pdf" data="assets/resume.pdf#view=FitH" type="application/pdf">
-      <p>Your browser can’t display PDFs inline. <a href="assets/resume.pdf" download>Download the resume</a> or <a href="assets/resume.pdf" target="_blank" rel="noopener">open it in a new tab</a>.</p>
-    </object>
+    <h1 id="resume-title" style="margin:0 0 8px;">Resume</h1>
+    <p style="margin:0;">Use the buttons above to download the PDF or open it in a new tab.</p>
   </main>
+
   <footer class="wrap" role="contentinfo" style="padding-top:12px;">
     <span>© <span id="y"></span> Kristof Balasanian</span>
   </footer>
+
   <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
