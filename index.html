@@ -13,6 +13,17 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://KristofBalasanian.github.io/" />
   <style>
+    /* =========================
+       EDITING GUIDE (quick refs)
+       - Colors & spacing: see :root CSS variables below
+       - Card height on desktop: --card-height-desktop
+       - Project grid gap: --grid-gap
+       - Button/text gaps in cards: --card-gap and --text-gap
+       - Link colors: --link (light), auto-adjusts in dark mode
+       - To add a new project card: copy the <template id="project-card-template"> at the bottom
+       - To change the Projects Deck link: replace SLIDES_URL everywhere
+       - To change the resume path: edit hrefs that point to assets/Kristof Balasanian Resume.pdf
+    ========================= */
     :root {
       --bg: #fff;
       --fg: #000;
@@ -21,7 +32,11 @@
       --pad: 24px;
       --radius: 16px;
       --seg: 32px;
-      --link: #1a73e8; /* Google blue for links in light mode */
+      --link: #1a73e8;
+      --card-gap: 16px; /* space above Link button inside cards */
+      --text-gap: 10px; /* space under card description text */
+      --grid-gap: 12px; /* gap between project cards */
+      --card-height-desktop: 200px; /* uniform card height on desktop */
     }
     html, body { height: 100%; }
     body {
@@ -48,16 +63,16 @@
     section { padding: 0; }
     section h2 { font-size: 20px; margin: 0 0 8px; }
     .card { border: 1px solid var(--fg); border-radius: var(--radius); padding: 16px; display: flex; flex-direction: column; box-sizing: border-box; }
-    .grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+    .grid { display: grid; grid-template-columns: 1fr; gap: var(--grid-gap); }
     @media (min-width: 720px) { .grid { grid-template-columns: 1fr 1fr; } }
     footer { padding: var(--seg) var(--pad); font-size: 14px; }
     footer a { color: var(--fg); }
     a { outline-offset: 2px; }
     a:focus-visible { outline: 2px solid var(--fg); }
     .wrap-tight { padding-top: 0; padding-bottom: 0; }
-    main.wrap { padding-top: 0; }@media (min-width: 720px) { .card { height: 180px; } }
+    main.wrap { padding-top: 0; }@media (min-width: 720px) { .card { height: var(--card-height-desktop); } }
 @media (max-width: 719px) { .card { height: auto; } }
-  .card .buttons { margin-top: 10px; }
+  .card .buttons { margin-top: var(--card-gap); }
   .card .content { flex: 1; }
 @media (min-width: 720px) {
   .grid .centered { grid-column: 1 / -1; justify-self: center; width: calc((100% - 12px)/2); }
@@ -78,6 +93,15 @@
     #theme-toggle { width: 32px; height: 32px; padding: 0; border: 1.5px solid var(--fg); background: transparent; border-radius: 9999px; cursor: pointer; }
     #theme-toggle:hover, #theme-toggle:focus { transform: translateY(-1px); }
     @media (max-width: 600px) { nav { width: auto; margin-left: auto; justify-content: flex-end; flex-wrap: nowrap; } }
+  .egg-link, .egg-link-btn { color: inherit; text-decoration: none; }
+    .egg-link-btn { background: transparent; border: 0; color: inherit; font: inherit; padding: 0; cursor: pointer; }
+    .egg-link-btn:focus-visible { outline: 2px solid var(--fg); outline-offset: 2px; border-radius: 6px; }
+    .egg-overlay { position: fixed; inset: 0; display: none; background: var(--bg); color: var(--fg); z-index: 1000; }
+    #hi-grace:target { display: grid; place-items: center; }
+    .egg-card { text-align: center; padding: 24px; }
+    .egg-msg { font-size: clamp(40px, 8vw, 96px); font-weight: 800; letter-spacing: 1px; }
+  .card h3 { margin: 0 0 6px; font-size: 18px; }
+    .card p { margin: 0 0 var(--text-gap); }
   </style>
 </head>
 <body>
@@ -105,25 +129,37 @@
     <section id="work" aria-labelledby="work-title">
       <h2 id="work-title">Selected Work</h2>
       <div class="grid">
-        <article class="card"><div class="content"><h3 style="margin:0 0 6px; font-size:18px;">FSAE HV Battery</h3>
-          <p style="margin:0 0 10px;">Thermal/Energy Modeling, packaging, and structures.</p></div>
+        <article class="card"><div class="content"><h3>FSAE HV Battery</h3>
+          <p>Thermal/Energy Modeling, packaging, and structures.</p></div>
           <div class="buttons">
             <a href="SLIDES_URL" class="button" target="_blank" rel="noopener">Link ↗</a>
           </div>
         </article>
-        <article class="card"><div class="content"><h3 style="margin:0 0 6px; font-size:18px;">Amidon Heavy Industries</h3>
-          <p style="margin:0 0 10px;">Rapid prototyping and testing of underwater and surface marine vehicles.</p></div>
+        <article class="card"><div class="content"><h3>Amidon Heavy Industries</h3>
+          <p>Rapid prototyping and testing of underwater and surface marine vehicles.</p></div>
           <div class="buttons">
             <a href="SLIDES_URL" class="button" target="_blank" rel="noopener">Link ↗</a>
           </div>
         </article>
-        <article class="card centered"><div class="content"><h3 style="margin:0 0 6px; font-size:18px;"><em>Coming Soon</em></h3>
-          <p style="margin:0 0 10px;">More projects on the way.</p></div>
+        <article class="card centered"><div class="content"><h3><em>Coming Soon</em></h3>
+          <p>More projects on the way.</p></div>
           <div class="buttons">
             <a href="#" class="button">Link ↗</a>
           </div>
         </article>
       </div>
+      <!-- Copy this template to add a new project card -->
+      <template id="project-card-template">
+        <article class="card">
+          <div class="content">
+            <h3>Project Title</h3>
+            <p>One-line description.</p>
+          </div>
+          <div class="buttons">
+            <a href="SLIDES_URL" class="button" target="_blank" rel="noopener">Link ↗</a>
+          </div>
+        </article>
+      </template>
     </section>
 
     <hr class="divider" />
@@ -147,8 +183,18 @@
   </main>
 
   <footer class="wrap" role="contentinfo">
-    <span>© <span id="y"></span> KNB</span>
+    <span><button type="button" class="egg-link-btn" aria-label="Open secret message" aria-controls="hi-grace">©</button> <span id="y"></span> KNB</span>
   </footer>
+
+  <!-- Secret page overlay -->
+  <div id="hi-grace" class="egg-overlay" aria-label="Secret message">
+    <div class="egg-card">
+      <div class="egg-msg">HI GRACE &lt;3</div>
+      <div style="margin-top:16px;">
+        <a href="#" class="button" aria-label="Back to site">← Back</a>
+      </div>
+    </div>
+  </div>
 
   <script>
   // Current year
@@ -171,6 +217,9 @@
       apply(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
     });
   })();
+  // Secret message opener
+  const eggBtn = document.querySelector('.egg-link-btn');
+  if (eggBtn) eggBtn.addEventListener('click', () => { location.hash = 'hi-grace'; });
 </script>
 </body>
 </html>
