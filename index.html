@@ -12,6 +12,7 @@
   <meta property="og:description" content="Mechanical Engineer. Portfolio, projects, and contact." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://KristofBalasanian.github.io/" />
+  <script>!function(){try{var t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark')}}();</script>
   <style>
     /* =========================
        EDITING GUIDE (quick refs)
@@ -249,7 +250,7 @@
     const key = 'theme';
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     const saved = localStorage.getItem(key);
-    const initial = saved || (prefersDark ? 'dark' : 'light');
+    const initial = saved || 'dark';
     function apply(t){
       root.setAttribute('data-theme', t);
       toggles.forEach(btn => { btn.setAttribute('aria-pressed', t==='dark'); btn.textContent = t==='dark' ? '☀️' : '🌙'; });
