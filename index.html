@@ -102,6 +102,21 @@
     .egg-msg { font-size: clamp(40px, 8vw, 96px); font-weight: 800; letter-spacing: 1px; }
   .card h3 { margin: 0 0 6px; font-size: 18px; }
     .card p { margin: 0 0 var(--text-gap); }
+  .image-card{position:relative;border-radius:24px;overflow:hidden;margin:12px 0;}
+    .image-card img{width:100%;height:auto;display:block;aspect-ratio:21/9;object-fit:cover;}
+  .image-card::before{content:"";position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,.35), rgba(0,0,0,0) 40%);pointer-events:none;}
+    .image-overlay{position:absolute;left:16px;right:16px;top:16px;display:flex;justify-content:space-between;align-items:center;gap:16px;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.6);}
+    .image-overlay a{color:inherit;text-decoration:none;}
+    .image-overlay a:hover,.image-overlay a:focus{text-decoration:underline;}
+    .image-overlay .ov-nav{display:flex;gap:16px;align-items:center;}
+    .ov-toggle{width:32px;height:32px;padding:0;border:1.5px solid currentColor;background:transparent;border-radius:9999px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;line-height:1;font-size:16px}
+    @media (max-width:600px){.image-overlay{left:12px;right:12px;top:12px;font-size:14px}}
+    /* Hide original header row since overlay replicates it */
+    header .top{display:none;}
+  .image-card::after{content:"";position:absolute;left:0;right:0;bottom:0;height:40%;background:linear-gradient(to top, rgba(0,0,0,.45), rgba(0,0,0,0));pointer-events:none;}
+    .image-tagline{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:#000;text-shadow:none;text-align:center;}
+    .image-h1{margin:0;font-size:clamp(28px,5vw,56px);line-height:1.1;font-weight:800;}
+    @media(max-width:600px){.image-tagline{left:12px;bottom:12px}.image-h1{font-size:clamp(22px,6vw,36px)}}
   </style>
 </head>
 <body>
@@ -115,15 +130,35 @@
         <button id="theme-toggle" aria-pressed="false" aria-label="Toggle dark mode">🌙</button>
       </nav>
     </div>
+    </div>
+  </header>
+
+  <!-- Featured image (upload to assets/landing.jpg) -->
+  <section class="wrap" aria-label="Featured image">
+    <figure class="image-card">
+      <img src="assets/landing.jpg" alt="Featured landscape" loading="lazy" decoding="async" />
+      <figcaption class="image-overlay" aria-label="Overlay navigation">
+        <div class="ov-name">Kristof Balasanian</div>
+        <nav class="ov-nav" aria-label="Overlay nav">
+          <a href="#contact">Contact</a>
+          <a href="assets/Kristof Balasanian Resume.pdf" target="_blank" rel="noopener">Resume</a>
+          <button id="theme-toggle-2" class="ov-toggle" aria-pressed="false" aria-label="Toggle dark mode">🌙</button>
+        </nav>
+      </figcaption>
+      <div class="image-tagline"><h1 class="image-h1">Mechanical Engineer</h1></div>
+    </figure>
+  </section>
+
+  <section class="wrap" aria-label="Intro">
     <div class="hero" id="content">
-      <h1>Mechanical Engineer</h1>
       <p>I like to solve hard problems and build cool stuff. View my projects deck for a high level overview of my experiences. (Some of my site is still a WIP, thank you for your patience while I get everything uploaded)</p>
       <div class="buttons">
         <a class="button" href="SLIDES_URL" target="_blank" rel="noopener" aria-label="Open projects slide deck in a new tab">View Projects Deck ↗</a>
         <a class="button" href="assets/Kristof Balasanian Resume.pdf" target="_blank" rel="noopener" aria-label="Open resume PDF in a new tab">Resume ↗</a>
       </div>
     </div>
-  </header>
+  </section>
+
   <div class="wrap wrap-tight"><hr class="divider" /></div>
   <main class="wrap" role="main">
     <section id="work" aria-labelledby="work-title">
@@ -199,23 +234,23 @@
   <script>
   // Current year
   document.getElementById('y').textContent = new Date().getFullYear();
-  // Theme toggle with persistence
+  // Theme toggle with persistence (supports multiple toggles)
   (function(){
     const root = document.documentElement;
-    const btn = document.getElementById('theme-toggle');
+    const toggles = document.querySelectorAll('#theme-toggle, #theme-toggle-2');
     const key = 'theme';
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     const saved = localStorage.getItem(key);
     const initial = saved || (prefersDark ? 'dark' : 'light');
     function apply(t){
       root.setAttribute('data-theme', t);
-      if (btn) { btn.setAttribute('aria-pressed', t==='dark'); btn.textContent = t==='dark' ? '☀️' : '🌙'; }
+      toggles.forEach(btn => { btn.setAttribute('aria-pressed', t==='dark'); btn.textContent = t==='dark' ? '☀️' : '🌙'; });
       localStorage.setItem(key, t);
     }
     apply(initial);
-    if (btn) btn.addEventListener('click', () => {
+    toggles.forEach(btn => btn.addEventListener('click', () => {
       apply(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
-    });
+    }));
   })();
   // Secret message opener
   const eggBtn = document.querySelector('.egg-link-btn');
