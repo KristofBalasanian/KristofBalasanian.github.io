@@ -4,15 +4,29 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Kristof Balasanian — Portfolio</title>
-  <meta name="description" content="Kristof Balasanian — Mechanical Engineer. Portfolio, projects, and contact." />
+  <meta name="description"
+        content="Kristof Balasanian — Mechanical Engineer. Portfolio, projects, and contact." />
   <meta name="theme-color" content="#ffffff" />
   <link rel="canonical" href="https://KristofBalasanian.github.io/" />
+
   <!-- Open Graph / Twitter -->
   <meta property="og:title" content="Kristof Balasanian — Portfolio" />
-  <meta property="og:description" content="Mechanical Engineer. Portfolio, projects, and contact." />
+  <meta property="og:description"
+        content="Mechanical Engineer. Portfolio, projects, and contact." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://KristofBalasanian.github.io/" />
-  <script>!function(){try{var t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark')}}();</script>
+
+  <script>
+    !function () {
+      try {
+        var t = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    }();
+  </script>
+
   <style>
     /* =========================
        EDITING GUIDE (quick refs)
@@ -25,6 +39,7 @@
        - To change the Projects Deck link: replace SLIDES_URL everywhere
        - To change the resume path: edit hrefs that point to assets/Kristof Balasanian Resume.pdf
     ========================= */
+
     :root {
       --bg: #fff;
       --fg: #000;
@@ -34,163 +49,329 @@
       --radius: 16px;
       --seg: 32px;
       --link: #1a73e8;
-      --card-gap: 16px; /* space above Link button inside cards */
-      --text-gap: 10px; /* space under card description text */
-      --grid-gap: 12px; /* gap between project cards */
+      --card-gap: 16px;     /* space above Link button inside cards */
+      --text-gap: 10px;     /* space under card description text */
+      --grid-gap: 12px;     /* gap between project cards */
       --card-height-desktop: 200px; /* uniform card height on desktop */
+      --overlay-fg: #000;
+      --hero-focus-y: 35%;
     }
+
     html, body { height: 100%; }
+
     body {
-      margin: 0; background: var(--bg); color: var(--fg);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, system-ui, sans-serif;
-      line-height: 1.6; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family:
+        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
+        Cantarell, "Helvetica Neue", Arial, system-ui, sans-serif;
+      line-height: 1.6;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
-    .skip { position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden; }
-    .skip:focus { position:static; width:auto; height:auto; padding:8px 12px; border:1px solid var(--fg); background: var(--bg); }
+
+    .skip {
+      position: absolute; left: -9999px; top: auto; width: 1px; height: 1px;
+      overflow: hidden;
+    }
+    .skip:focus {
+      position: static; width: auto; height: auto;
+      padding: 8px 12px; border: 1px solid var(--fg); background: var(--bg);
+    }
+
     .wrap { max-width: var(--maxw); margin: 0 auto; padding: var(--pad); }
+
     header { padding: calc(var(--pad) * 1.5) var(--pad) 0; }
-    header .top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    header .top {
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    }
+
     .brand { font-weight: 700; letter-spacing: 0.2px; }
+
+    nav { display: flex; flex-wrap: nowrap; gap: 16px; margin-left: auto; }
     nav a { color: var(--fg); text-decoration: none; }
-    nav { display:flex; flex-wrap: nowrap; gap: 16px; margin-left: auto; }
     nav a:hover, nav a:focus { text-decoration: underline; }
+
     .hero { padding: 40px var(--pad) 0; }
-    .hero h1 { font-size: clamp(32px, 5vw, 48px); line-height: 1.15; margin: 0 0 12px; text-align: center; }
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      line-height: 1.15; margin: 0 0 12px; text-align: center;
+    }
     .hero p { font-size: clamp(16px, 2vw, 18px); margin: 0 0 20px; }
-    .buttons { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; width: 100%; }
-    .button { display: inline-block; border: 1.5px solid var(--fg); color: var(--fg); background: var(--bg); padding: 12px 18px; border-radius: var(--radius); text-decoration: none; font-weight: 600; }
+
+    .buttons {
+      display: flex; flex-wrap: wrap; gap: 12px;
+      justify-content: center; width: 100%;
+    }
+    .button {
+      display: inline-block;
+      border: 1.5px solid var(--fg); color: var(--fg); background: var(--bg);
+      padding: 12px 18px; border-radius: var(--radius);
+      text-decoration: none; font-weight: 600;
+    }
     .button:hover, .button:focus { outline: none; transform: translateY(-1px); }
-    .divider { height: 1px; border: 0; background: var(--fg); margin: var(--seg) 0; opacity: 0.15; }
+
+    .divider { height: 1px; border: 0; background: var(--fg);
+      margin: var(--seg) 0; opacity: 0.15; }
+
     section { padding: 0; }
     section h2 { font-size: 20px; margin: 0 0 8px; }
-    .card { border: 1px solid var(--fg); border-radius: var(--radius); padding: 16px; display: flex; flex-direction: column; box-sizing: border-box; }
+
+    .card {
+      border: 1px solid var(--fg); border-radius: var(--radius); padding: 16px;
+      display: flex; flex-direction: column; box-sizing: border-box;
+    }
+
     .grid { display: grid; grid-template-columns: 1fr; gap: var(--grid-gap); }
     @media (min-width: 720px) { .grid { grid-template-columns: 1fr 1fr; } }
+
     footer { padding: var(--seg) var(--pad); font-size: 14px; }
     footer a { color: var(--fg); }
+
     a { outline-offset: 2px; }
     a:focus-visible { outline: 2px solid var(--fg); }
+
     .wrap-tight { padding-top: 0; padding-bottom: 0; }
-    main.wrap { padding-top: 0; }@media (min-width: 720px) { .card { height: var(--card-height-desktop); } }
-@media (max-width: 719px) { .card { height: auto; } }
-  .card .buttons { margin-top: var(--card-gap); }
-  .card .content { flex: 1; }
-@media (min-width: 720px) {
-  .grid .centered { grid-column: 1 / -1; justify-self: center; width: calc((100% - 12px)/2); }
-}
-@media (max-width: 719px) { .grid .centered { width: auto; justify-self: stretch; } }
-:root { color-scheme: light dark; }
-    :root[data-theme="dark"] { --bg: #202124; --fg: #E8EAED; --accent: #E8EAED; --link: #8AB4F8; --overlay-fg: #fff; }
-    @media (prefers-color-scheme: dark) { :root:not([data-theme]) { --bg: #202124; --fg: #E8EAED; --link: #8AB4F8; --overlay-fg: #fff; } }
-    @media (max-width: 600px) { header .top { flex-direction: row; align-items: center; } }
-  #contact a { color: var(--link); text-decoration: underline; text-decoration-skip-ink: none; text-underline-offset: 3px; text-decoration-thickness: 1.5px; }
-    #theme-toggle { width: 36px; height: 36px; padding: 8px; border-radius: 9999px; display: inline-flex; align-items: center; justify-content: center; }
-  /* Header alignment fixes */
+    main.wrap { padding-top: 0; }
+
+    @media (min-width: 720px) { .card { height: var(--card-height-desktop); } }
+    @media (max-width: 719px) { .card { height: auto; } }
+
+    .card .buttons { margin-top: var(--card-gap); }
+    .card .content { flex: 1; }
+
+    @media (min-width: 720px) {
+      .grid .centered {
+        grid-column: 1 / -1; justify-self: center;
+        width: calc((100% - 12px) / 2);
+      }
+    }
+    @media (max-width: 719px) {
+      .grid .centered { width: auto; justify-self: stretch; }
+    }
+
+    :root { color-scheme: light dark; }
+    :root[data-theme="dark"] {
+      --bg: #202124; --fg: #E8EAED; --accent: #E8EAED; --link: #8AB4F8; --overlay-fg: #fff;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme]) {
+        --bg: #202124; --fg: #E8EAED; --link: #8AB4F8; --overlay-fg: #fff;
+      }
+    }
+    @media (max-width: 600px) {
+      header .top { flex-direction: row; align-items: center; }
+      nav { width: auto; margin-left: auto; justify-content: flex-end; flex-wrap: nowrap; }
+    }
+
+    #contact a {
+      color: var(--link); text-decoration: underline; text-decoration-skip-ink: none;
+      text-underline-offset: 3px; text-decoration-thickness: 1.5px;
+    }
+
+    /* Header alignment fixes */
     header .top { flex-wrap: nowrap; }
-    nav { display: flex; align-items: center; gap: 16px; }
     nav > * { display: inline-flex; align-items: center; height: 32px; line-height: 1; }
     nav a { padding: 0 6px; }
+
     /* Toggle styled to match link height */
-    #theme-toggle { width: 32px; height: 32px; padding: 0; border: 1.5px solid var(--fg); background: transparent; border-radius: 9999px; cursor: pointer; }
+    #theme-toggle {
+      width: 32px; height: 32px; padding: 0;
+      border: 1.5px solid var(--fg); background: transparent;
+      border-radius: 9999px; cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center;
+    }
     #theme-toggle:hover, #theme-toggle:focus { transform: translateY(-1px); }
-    @media (max-width: 600px) { nav { width: auto; margin-left: auto; justify-content: flex-end; flex-wrap: nowrap; } }
-  .egg-link, .egg-link-btn { color: inherit; text-decoration: none; }
-    .egg-link-btn { background: transparent; border: 0; color: inherit; font: inherit; padding: 0; cursor: pointer; }
-    .egg-link-btn:focus-visible { outline: 2px solid var(--fg); outline-offset: 2px; border-radius: 6px; }
-    .egg-overlay { position: fixed; inset: 0; display: none; background: var(--bg); color: var(--fg); z-index: 1000; }
+
+    .egg-link, .egg-link-btn { color: inherit; text-decoration: none; }
+    .egg-link-btn {
+      background: transparent; border: 0; color: inherit; font: inherit;
+      padding: 0; cursor: pointer;
+    }
+    .egg-link-btn:focus-visible {
+      outline: 2px solid var(--fg); outline-offset: 2px; border-radius: 6px;
+    }
+
+    .egg-overlay {
+      position: fixed; inset: 0; display: none;
+      background: var(--bg); color: var(--fg); z-index: 1000;
+    }
     #hi-grace:target { display: grid; place-items: center; }
     .egg-card { text-align: center; padding: 24px; }
-    .egg-msg { font-size: clamp(40px, 8vw, 96px); font-weight: 800; letter-spacing: 1px; }
-  .card h3 { margin: 0 0 6px; font-size: 18px; }
+    .egg-msg {
+      font-size: clamp(40px, 8vw, 96px); font-weight: 800; letter-spacing: 1px;
+    }
+
+    .card h3 { margin: 0 0 6px; font-size: 18px; }
     .card p { margin: 0 0 var(--text-gap); }
-  .image-card{position:relative;border-radius:24px;overflow:hidden;margin:12px 0;}
-    .image-card img{width:100%;height:auto;display:block;aspect-ratio:21/9;object-fit:cover;object-position:50% var(--hero-focus-y);}
-  .image-card::before{content:"";position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,.35), rgba(0,0,0,0) 40%);pointer-events:none;}
-    .image-overlay{position:absolute;left:16px;right:16px;top:16px;display:flex;justify-content:space-between;align-items:center;gap:16px;color:var(--overlay-fg);text-shadow:none;}
-    .image-overlay a{color:inherit;text-decoration:none;}
-    .image-overlay a:hover,.image-overlay a:focus{text-decoration:underline;}
-    .image-overlay .ov-nav{display:flex;gap:16px;align-items:center;}
-    .ov-toggle{width:32px;height:32px;padding:0;border:1.5px solid currentColor;background:transparent;border-radius:9999px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;line-height:1;font-size:16px}
-    @media (max-width:600px){.image-overlay{left:12px;right:12px;top:12px;font-size:14px}}
+
+    .image-card {
+      position: relative; border-radius: 24px; overflow: hidden; margin: 12px 0;
+    }
+    .image-card img {
+      width: 100%; height: auto; display: block;
+      aspect-ratio: 21 / 9; object-fit: cover;
+      object-position: 50% var(--hero-focus-y);
+    }
+    .image-card::before {
+      content: "";
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,.35), rgba(0,0,0,0) 40%);
+      pointer-events: none;
+    }
+    .image-overlay {
+      position: absolute; left: 16px; right: 16px; top: 16px;
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+      color: var(--overlay-fg); text-shadow: none;
+    }
+    .image-overlay a { color: inherit; text-decoration: none; }
+    .image-overlay a:hover, .image-overlay a:focus { text-decoration: underline; }
+    .image-overlay .ov-nav { display: flex; gap: 16px; align-items: center; }
+
+    .ov-toggle {
+      width: 32px; height: 32px; padding: 0;
+      border: 1.5px solid currentColor; background: transparent;
+      border-radius: 9999px; cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center;
+      line-height: 1; font-size: 16px;
+    }
+
+    @media (max-width: 600px) {
+      .image-overlay { left: 12px; right: 12px; top: 12px; font-size: 14px; }
+    }
+
     /* Hide original header row since overlay replicates it */
-    header .top{display:none;}
-    
-  :root { --overlay-fg: #000; }
-    /* Tighter space between image and hero */
-    section[aria-label="Intro"] .hero { padding-top: calc(var(--seg) * 0.75); }
-  .ov-name{font-weight:800;font-size:clamp(18px,3vw,28px)}
-    .image-overlay{font-size:clamp(14px,2.2vw,18px)}
-    .image-overlay .ov-nav a{font-weight:600}
-  /* Force overlay toggle ring: black in light, white in dark */
+    header .top { display: none; }
+
+    .ov-name { font-weight: 800; font-size: clamp(18px, 3vw, 28px); }
+    .image-overlay { font-size: clamp(14px, 2.2vw, 18px); }
+    .image-overlay .ov-nav a { font-weight: 600; }
+
+    /* Force overlay toggle ring: black in light, white in dark */
     .image-overlay .ov-toggle { border-color: #000; color: #000; }
     :root[data-theme="dark"] .image-overlay .ov-toggle { border-color: #fff; color: #fff; }
-    @media (prefers-color-scheme: dark) { :root:not([data-theme]) .image-overlay .ov-toggle { border-color: #fff; color: #fff; } }
-  :root { --hero-focus-y: 35%; }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme]) .image-overlay .ov-toggle { border-color: #fff; color: #fff; }
+    }
+
   </style>
 </head>
 <body>
   <a class="skip" href="#content">Skip to content</a>
+
   <header class="wrap" role="banner">
     <div class="top">
       <div class="brand" aria-label="Site logo and name">Kristof Balasanian</div>
       <nav aria-label="Primary">
         <a href="#contact">Contact</a>
-        <a href="assets/Kristof Balasanian Resume.pdf" target="_blank" rel="noopener">Resume</a>
-        <button id="theme-toggle" aria-pressed="false" aria-label="Toggle dark mode">🌙</button>
+        <a href="assets/Kristof Balasanian Resume.pdf"
+           target="_blank" rel="noopener">Resume</a>
+        <button id="theme-toggle"
+                aria-pressed="false"
+                aria-label="Toggle dark mode">🌙</button>
       </nav>
-    </div>
     </div>
   </header>
 
   <!-- Featured image (upload to assets/landing.jpg) -->
   <section class="wrap" aria-label="Featured image">
     <figure class="image-card">
-      <img src="assets/landing.jpg" alt="Featured landscape" loading="eager" decoding="async" />
+      <img src="assets/landing.jpg"
+           alt="Featured landscape"
+           loading="eager"
+           decoding="async" />
       <figcaption class="image-overlay" aria-label="Overlay navigation">
         <div class="ov-name">Kristof Balasanian</div>
         <nav class="ov-nav" aria-label="Overlay nav">
           <a href="#contact">Contact</a>
-          <a href="assets/Kristof Balasanian Resume.pdf" target="_blank" rel="noopener">Resume</a>
-          <button id="theme-toggle-2" class="ov-toggle" aria-pressed="false" aria-label="Toggle dark mode">🌙</button>
+          <a href="assets/Kristof Balasanian Resume.pdf"
+             target="_blank" rel="noopener">Resume</a>
+          <button id="theme-toggle-2"
+                  class="ov-toggle"
+                  aria-pressed="false"
+                  aria-label="Toggle dark mode">🌙</button>
         </nav>
       </figcaption>
-      
     </figure>
   </section>
 
   <section class="wrap" aria-label="Intro">
     <div class="hero" id="content">
       <h1>Mechanical Engineer</h1>
-      <p>I am a problem solver with a passion for building cool stuff. I am still working on gathering my selected works, thank you for your patience. I also cannot share some experiences due to NDAs.  </p>
-      <div class="buttons"><a class="button" href="assets/Kristof Balasanian Resume.pdf" target="_blank" rel="noopener" aria-label="Open resume PDF in a new tab">Resume ↗</a>
+      <div class="buttons">
+        <a class="button"
+           href="assets/Kristof Balasanian Resume.pdf"
+           target="_blank"
+           rel="noopener"
+           aria-label="Open resume PDF in a new tab">Resume ↗</a>
+        <a class="button"
+           href="#work"
+           aria-label="Jump to Selected Work">Selected Works ↓</a>
       </div>
     </div>
   </section>
 
   <div class="wrap wrap-tight"><hr class="divider" /></div>
+
+  <!-- ===== main content ===== -->
   <main class="wrap" role="main">
+
+    <!-- About moved to the top -->
+    <section id="about" aria-labelledby="about-title">
+      <h2 id="about-title">About</h2>
+
+      <p>Thank you for visiting my website! I’m a 4th-year Mechanical Engineering undergraduate at San Diego State University. I have a passion for problem solving and building cool stuff. I am looking for full-time role starting in summer 2026.</p>
+
+      <p>I have a combined year of professional experience across several internships. At Tesla, I worked on a ground-up vehicle program on the integration team. Last summer I joined Amidon Heavy Industries, a pre-seed startup building fleets of autonomous underwater and surface robots for commercial ocean-infrastructure monitoring; I had a lot of ownership and hands-on build/test.</p>
+
+      <p>I’m currently at Kunin, a pre-seed startup where I’m responsible for modeling, fluids analysis, and BOM/CAPEX buildout for a spiral-wound, nanofiber-based ion-exchange module for selective ionic separations. The technology will be initially deployed in the mining industry. In parallel to this I have just started my capstone project on the behalf of the US Navy - Naval Information Warfare Center Pacific where I will be working on mechanical RF‑steering using a patch antenna on a gimbal for jam‑resilient swarm communications for small UAS.</p>
+
+      <p>In addition to my professional engineering experience I spent 3 years on my school's FSAE EV team serving as a Senior Engineer and the Vice President managing a six figure budget. I also particpated in my schools startup accelerator and was an investor for a So-Cal based angel syndicate, Crater Ventures.</p>
+
+      <p>In my spare time, I enjoy participating in triathlons, skiing and sailing.  I also love traveling, cooking, good food and going to the beach with my friends!</p>
+    </section>
+
+    <hr class="divider" />
+
     <section id="work" aria-labelledby="work-title">
       <h2 id="work-title">Selected Work</h2>
+
       <div class="grid">
-        <article class="card"><div class="content"><h3>FSAE HV Battery</h3>
-          <p>Thermal/Energy Modeling, packaging, and structures.</p></div>
+        <article class="card">
+          <div class="content">
+            <h3>FSAE HV Battery</h3>
+            <p>Thermal/Energy Modeling, packaging, and structures.</p>
+          </div>
           <div class="buttons">
-            <a href="https://docs.google.com/presentation/d/1qq6_q5IEG-_skKdf7ERH_wJ1cTsuKJvI/present" class="button" target="_blank" rel="noopener">Link ↗</a>
+            <a href="https://docs.google.com/presentation/d/1qq6_q5IEG-_skKdf7ERH_wJ1cTsuKJvI/present"
+               class="button" target="_blank" rel="noopener">Link ↗</a>
           </div>
         </article>
-        <article class="card"><div class="content"><h3>Amidon Heavy Industries</h3>
-          <p>Rapid prototyping and testing of underwater and surface marine vehicles.</p></div>
+
+        <article class="card">
+          <div class="content">
+            <h3>Amidon Heavy Industries</h3>
+            <p>Rapid prototyping and testing of underwater and surface marine vehicles.</p>
+          </div>
           <div class="buttons">
-            <a href="https://docs.google.com/presentation/d/1eo4M-JVrazbhfiHbonQ69hgoT9SqOzW7/present" class="button" target="_blank" rel="noopener">Link ↗</a>
+            <a href="https://docs.google.com/presentation/d/1eo4M-JVrazbhfiHbonQ69hgoT9SqOzW7/present"
+               class="button" target="_blank" rel="noopener">Link ↗</a>
           </div>
         </article>
-        <article class="card centered"><div class="content"><h3><em>Coming Soon</em></h3>
-          <p>More projects on the way.</p></div>
+
+        <article class="card centered">
+          <div class="content">
+            <h3><em>Coming Soon</em></h3>
+            <p>More projects on the way.</p>
+          </div>
           <div class="buttons">
             <a href="#" class="button">Link ↗</a>
           </div>
         </article>
       </div>
+
       <!-- Copy this template to add a new project card -->
       <template id="project-card-template">
         <article class="card">
@@ -207,35 +388,38 @@
 
     <hr class="divider" />
 
-    <section id="about" aria-labelledby="about-title">
-      <h2 id="about-title">About</h2>
-      <p>Thank you for visiting my website! I’m a 4th-year Mechanical Engineering undergrad at San Diego State University, looking for full-time roles starting in summer 2026.</p>
-      <p>I have a combined year of professional experience across several internships. At <strong>Tesla</strong>, I worked on a ground-up vehicle program on the integration team. 
-        Last summer I joined <strong>Amidon Heavy Industries</strong>, 
-        a pre-seed startup building fleets of autonomous underwater and surface robots for commercial ocean-infrastructure monitoring; 
-        I had a lot of ownership and hands-on build/test.  
-        <p>I’m currently at <strong>Kunin</strong>, a pre-seed startup where I’m responsible for modeling, 
-        fluids analysis, and BOM/CAPEX buildout for a spiral-wound, nanofiber-based ion-exchange module for selective ionic separations. 
-        The technology will be initially deployed in the mining industry. In parallel to this I have just started my capstone project on the behalf of the <strong> US Navy - Naval Information Warfare Center Pacific</strong> 
-        where I will be working on mechanical RF‑steering using a patch antenna on a gimbal for jam‑resilient swarm communications for small UAS.</p> 
-      <p>In addition to my professional engineering experience I spent 3 years on my schools FSAE EV team serving as a Senior Engineer and the Vice President managing
-        a six figure budget. I also particpated in my schools startup accelerator and was an investor for a So-Cal based angel syndicate, Crater Ventures.  
-      <p>Outside of everything I have mentioned, I am into triathlon, skiing, sailing, travel, a lot of good food, and going to the beach with my friends!</p>
-    </section>
-
-    <hr class="divider" />
-
     <section id="contact" aria-labelledby="contact-title">
       <h2 id="contact-title">Contact</h2>
+
       <p style="margin:0 0 12px;">Always open to chat with anyone!</p>
-      <p style="margin:0 0 6px;"><strong>Email:</strong> <a href="mailto:kristofbalasanian@gmail.com">kristofbalasanian@gmail.com</a></p>
-      <p style="margin:0 0 6px;"><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/kristofbalasanian/" target="_blank" rel="noopener">linkedin.com/in/kristofbalasanian</a></p>
-      <p style="margin:0;"><strong>GitHub:</strong> <a href="https://github.com/KristofBalasanian" target="_blank" rel="noopener">github.com/KristofBalasanian</a></p>
+
+      <p style="margin:0 0 6px;">
+        <strong>Email:</strong>
+        <a href="mailto:kristofbalasanian@gmail.com">kristofbalasanian@gmail.com</a>
+      </p>
+
+      <p style="margin:0 0 6px;">
+        <strong>LinkedIn:</strong>
+        <a href="https://www.linkedin.com/in/kristofbalasanian/"
+           target="_blank" rel="noopener">linkedin.com/in/kristofbalasanian</a>
+      </p>
+
+      <p style="margin:0;">
+        <strong>GitHub:</strong>
+        <a href="https://github.com/KristofBalasanian"
+           target="_blank" rel="noopener">github.com/KristofBalasanian</a>
+      </p>
     </section>
   </main>
 
   <footer class="wrap" role="contentinfo">
-    <span><button type="button" class="egg-link-btn" aria-label="Open secret message" aria-controls="hi-grace">©</button> <span id="y"></span> KNB</span>
+    <span>
+      <button type="button"
+              class="egg-link-btn"
+              aria-label="Open secret message"
+              aria-controls="hi-grace">©</button>
+      <span id="y"></span> KNB
+    </span>
   </footer>
 
   <!-- Secret page overlay -->
@@ -249,29 +433,36 @@
   </div>
 
   <script>
-  // Current year
-  document.getElementById('y').textContent = new Date().getFullYear();
-  // Theme toggle with persistence (supports multiple toggles)
-  (function(){
-    const root = document.documentElement;
-    const toggles = document.querySelectorAll('#theme-toggle, #theme-toggle-2');
-    const key = 'theme';
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const saved = localStorage.getItem(key);
-    const initial = saved || 'dark';
-    function apply(t){
-      root.setAttribute('data-theme', t);
-      toggles.forEach(btn => { btn.setAttribute('aria-pressed', t==='dark'); btn.textContent = t==='dark' ? '☀️' : '🌙'; });
-      localStorage.setItem(key, t);
-    }
-    apply(initial);
-    toggles.forEach(btn => btn.addEventListener('click', () => {
-      apply(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
-    }));
-  })();
-  // Secret message opener
-  const eggBtn = document.querySelector('.egg-link-btn');
-  if (eggBtn) eggBtn.addEventListener('click', () => { location.hash = 'hi-grace'; });
-</script>
+    // Current year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Theme toggle with persistence (supports multiple toggles)
+    (function () {
+      const root = document.documentElement;
+      const toggles = document.querySelectorAll('#theme-toggle, #theme-toggle-2');
+      const key = 'theme';
+      const saved = localStorage.getItem(key);
+      const initial = saved || 'dark';
+
+      function apply(t) {
+        root.setAttribute('data-theme', t);
+        toggles.forEach(btn => {
+          btn.setAttribute('aria-pressed', t === 'dark');
+          btn.textContent = t === 'dark' ? '☀️' : '🌙';
+        });
+        localStorage.setItem(key, t);
+      }
+
+      apply(initial);
+
+      toggles.forEach(btn => btn.addEventListener('click', () => {
+        apply(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+      }));
+    })();
+
+    // Secret message opener
+    const eggBtn = document.querySelector('.egg-link-btn');
+    if (eggBtn) eggBtn.addEventListener('click', () => { location.hash = 'hi-grace'; });
+  </script>
 </body>
 </html>
