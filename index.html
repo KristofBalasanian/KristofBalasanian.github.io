@@ -6,7 +6,7 @@
   <title>Kristof Balasanian - Portfolio</title>
   <meta name="description"
         content="Kristof Balasanian — Mechanical Engineer. Portfolio, projects, and contact." />
-  <meta name="theme-color" content="#ffffff" />
+  <meta name="theme-color" content="#202124" />
   <link rel="canonical" href="https://KristofBalasanian.github.io/" />
 
   <!-- Open Graph / Twitter -->
@@ -16,7 +16,16 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://KristofBalasanian.github.io/" />
 
+  <!-- Icons (all live in /assets) -->
+  <link rel="icon" href="assets/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="manifest" href="assets/site.webmanifest">
+  <meta name="msapplication-TileColor" content="#202124" />
+
   <script>
+    // Force dark on first paint unless user previously chose
     !function () {
       try {
         var t = localStorage.getItem('theme') || 'dark';
@@ -49,10 +58,10 @@
       --radius: 16px;
       --seg: 32px;
       --link: #1a73e8;
-      --card-gap: 16px;     /* space above Link button inside cards */
-      --text-gap: 10px;     /* space under card description text */
-      --grid-gap: 12px;     /* gap between project cards */
-      --card-height-desktop: 200px; /* uniform card height on desktop */
+      --card-gap: 16px;
+      --text-gap: 10px;
+      --grid-gap: 12px;
+      --card-height-desktop: 200px;
       --overlay-fg: #000;
       --hero-focus-y: 35%;
     }
@@ -249,13 +258,6 @@
     .image-overlay { font-size: clamp(14px, 2.2vw, 18px); }
     .image-overlay .ov-nav a { font-weight: 600; }
 
-    /* Force overlay toggle ring: black in light, white in dark */
-    .image-overlay .ov-toggle { border-color: #000; color: #000; }
-    :root[data-theme="dark"] .image-overlay .ov-toggle { border-color: #fff; color: #fff; }
-    @media (prefers-color-scheme: dark) {
-      :root:not([data-theme]) .image-overlay .ov-toggle { border-color: #fff; color: #fff; }
-    }
-
   </style>
 </head>
 <body>
@@ -318,7 +320,7 @@
   <!-- ===== main content ===== -->
   <main class="wrap" role="main">
 
-    <!-- About moved to the top -->
+    <!-- About at the top -->
     <section id="about" aria-labelledby="about-title">
       <h2 id="about-title">About</h2>
 
@@ -326,7 +328,7 @@
 
       <p>I have a combined year of professional experience across several internships. At <strong>Tesla</strong>, I worked on the Robotaxi integration team, this was a great mix of mass production design and project managment experience. Last summer I joined <strong>Amidon Heavy Industries</strong>, a pre-seed startup building fleets of autonomous underwater and surface robots for commercial ocean-infrastructure monitoring; I had a lot of ownership and hands-on build/test.</p>
 
-      <p>I’m currently at <strong>Kunin</strong>, a pre-seed startup where I’m responsible for modeling, fluids analysis, and BOM/CAPEX buildout for a spiral-wound, nanofiber-based ion-exchange module for selective ionic separations. The technology will be initially deployed in the mining industry. In parallel to this I have just started my capstone project on behalf of the <strong>US Navy - Naval Information Warfare Center Pacific</strong> where I will be working on mechanical RF‑steering using a patch antenna on a gimbal for jam‑resilient swarm communications for small UAS.</p>
+      <p>I’m currently at <strong>Kunin</strong>, a pre-seed startup where I’m responsible for modeling, fluids analysis, and BOM/CAPEX buildout for a spiral-wound, nanofiber-based ion-exchange module for selective ionic separations. The technology will be initially deployed in the mining industry. In parallel to this I have just started my capstone project on behalf of the <strong>US Navy - Naval Information Warfare Center Pacific</strong> where I will be working on mechanical RF-steering using a patch antenna on a gimbal for jam-resilient swarm communications for small UAS.</p>
 
       <p>In addition to my professional engineering experience I spent 3 years on my school's FSAE EV team <strong>Aztec Electric Racing</strong>, serving as a Senior Engineer and the Vice President managing a six figure budget. I also particpated in my schools startup accelerator, <strong>ZIP Launchpad</strong>, and was an investor for a So-Cal based angel syndicate, <strong>Crater Ventures</strong>.</p>
 
